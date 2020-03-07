@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.task-block {
+  display: inline-block;
+  position: relative;
+  height: 12em;
+  width: 20em;
+  border: thin solid grey;
+  padding: 0.5em;
+  margin: 0.25em;
+}
+
+.task-block-id {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
+
+.task-block-name {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.task-block-date {
+  font-size: smaller;
+}
+
+.task-complete {
+  font-style: italic;
+  color: #444;
+}

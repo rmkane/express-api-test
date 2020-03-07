@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks</title>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <link href="/css/style.css" rel="stylesheet" />
+  <script type="text/javascript">
+    /* global Handlebars, moment */
+    Handlebars.registerHelper({
+      'if_eq' : function(a, b, opts) {
+        return a == b ? opts.fn(this) : opts.inverse(this);
+      },
+      'format_date' : function(date) {
+        return moment(date).format('YYYY-MM-DD @hh:mm:ss');
+      }
+    });
+  </script>
+</head>
+<body>
+<h1>Tasks</h1>
+<div id="results"></div>
+<script id="task-list-template" type="text/x-handlebars-template">
+  <div class="task-list">
+    {{#each .}}
+    <div class="task-block">
+      <div class="task-block-id"><a href="/task/{{this.id}}">{{this.id}}</a></div>
+      <div class="task-block-name {{#if_eq status 1}}task-complete{{/if_eq}}">{{this.name}}</div>
+      <div class="task-block-date">Created on: {{format_date this.created_at}}</div>
+    </div>
+    {{/each}}
+  </div>
+</script>
+<script type="text/javascript">
+  const tpl = document.querySelector('#task-list-template').innerHTML;
+  const renderTasks = Handlebars.compile(tpl);
+
+  fetch('/v1/tasks')
+      .then((response) => {
+        return response.json();
+      })
+      .then((tasks) => {
+        document.querySelector('#results').innerHTML = renderTasks(tasks);
+      });
+</script>
+</body>
+</html>

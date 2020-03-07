@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task</title>
+  <script type="text/javascript">
+    let pageId = window.location.pathname.split('/').pop();
+    document.title += ` ${pageId}`; // Append the ID
+  </script>
+  <style type="text/css">
+    .label {
+      display: inline-block;
+      width: 5em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<h1>Task</h1>
+<div>
+  <div>
+    <span class="label">Name:</span> <span class="task-name"></span>
+  </div>
+  <div>
+    <span class="label">Created:</span> <span class="task-created-at"></span>
+  </div>
+</div>
+<script type="text/javascript">
+  fetch(`/v1/task/${pageId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((task) => {
+        if (task != null) {
+          document.body.querySelector('h1').textContent += ` ${task.id}`; // Append the ID
+          document.querySelector('.task-name').textContent = task.name;
+          document.querySelector('.task-created-at').textContent = task.created_at;
+        } else {
+          document.write(`Task with "id"=${pageId} not found!`);
+        }
+      });
+</script>
+</body>
+</html>
