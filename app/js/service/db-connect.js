@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const connProps = require('../resources/db-properties');
+const connProps = require('../../resources/db-properties');
 
 let conn = mysql.createConnection(connProps);
 

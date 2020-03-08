@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #111;
+  color: #EEE;
 }
 
 a {
@@ -12,9 +14,10 @@ a {
   position: relative;
   height: 12em;
   width: 20em;
-  border: thin solid grey;
+  border: thin solid #444;
   padding: 0.5em;
   margin: 0.25em;
+  background: #333;
 }
 
 .task-block-id {
@@ -35,5 +38,5 @@ a {
 
 .task-complete {
   font-style: italic;
-  color: #444;
+  color: #AAA;
 }

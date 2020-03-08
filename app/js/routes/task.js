@@ -6,9 +6,9 @@ class TaskRoutes {
     this.taskController = new TaskController();
   }
 
-  register(app) {
+  register(app, baseServerUrl) {
     this.registerRestRoutes(app);
-    this.registerWebRoutes(app);
+    this.registerWebRoutes(app, baseServerUrl);
   }
 
   registerRestRoutes(app) {
@@ -25,15 +25,16 @@ class TaskRoutes {
         .delete((req, res) => this.taskController.deleteTask(req, res));
   }
 
-  registerWebRoutes(app) {
+  registerWebRoutes(app, baseServerUrl) {
     app.get('/tasks', function(req, res) {
-      res.sendFile(path.join(__dirname + '../../../public/pages/tasks.html'));
+      res.sendFile(path.join(baseServerUrl + '/public/pages/tasks.html'));
     });
 
     app.get('/task/:taskId', function(req, res) {
-      res.sendFile(path.join(__dirname + '../../../public/pages/task.html'));
+      res.sendFile(path.join(baseServerUrl + '/public/pages/task.html'));
     });
   }
 }
 
 module.exports = TaskRoutes;
+
