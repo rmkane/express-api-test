@@ -1,3 +1,5 @@
+import TaskController from "../controller/task";
+
 class TaskService {
   constructor() {
     this.sql = require('./db-connect.js');
@@ -73,4 +75,4 @@ class TaskService {
   }
 }
 
-module.exports = TaskService;
+export default TaskService;

@@ -1,5 +1,6 @@
-const path = require('path');
-const TaskController = require('../controller/task');
+import path from 'path';
+import TaskController from '../controller/task';
+import NoteDetails from "../view/note-details";
 
 class TaskRoutes {
   constructor() {
@@ -31,10 +32,12 @@ class TaskRoutes {
     });
 
     app.get('/task/:taskId', function(req, res) {
-      res.sendFile(path.join(baseServerUrl + '/public/pages/task.html'));
+      //res.sendFile(path.join(baseServerUrl + '/public/pages/task.html'));
+      const appString = renderToString(new NoteDetails());
+      res.send(template({ }));
     });
   }
 }
 
-module.exports = TaskRoutes;
+export default TaskRoutes;
 

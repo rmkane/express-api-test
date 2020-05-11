@@ -1,5 +1,5 @@
-const Task = require('../model/task');
-const TaskService = require('../service/task');
+import Task from '../model/task';
+import TaskService from '../service/task';
 
 class TaskController {
   constructor() {
@@ -56,4 +56,4 @@ class TaskController {
   };
 }
 
-module.exports = TaskController;
+export default TaskController;

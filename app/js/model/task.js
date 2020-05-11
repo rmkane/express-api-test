@@ -1,3 +1,5 @@
+import TaskController from "../controller/task";
+
 class Task {
   constructor(config) {
     this.name = config.name;
@@ -6,4 +8,4 @@ class Task {
   }
 }
 
-module.exports = Task;
+export default Task;
